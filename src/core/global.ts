@@ -59,7 +59,7 @@ export function cancelGlobalCommands() {
 
 function getRunner(maxDeltaTime = MAX_DELTA_TIME_MS): Runner {
   if (globalRunner === undefined) {
-    if (window === undefined) {
+    if (typeof window === 'undefined') {
       globalRunner = new NodeRunner(maxDeltaTime);
     } else {
       globalRunner = new BrowserRunner(maxDeltaTime);
