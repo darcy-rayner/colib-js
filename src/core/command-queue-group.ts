@@ -8,7 +8,7 @@ export class CommandQueueGroup {
   /**
    * Creates a queue, which will be updated by the group.
    */
-  createQueue() {
+  public createQueue() {
     const queue = new CommandQueue();
     this.addQueue(queue);
     return queue;
@@ -29,7 +29,7 @@ export class CommandQueueGroup {
    *
    * @param queue The `CommandQueue` for the behaviour to update.
    */
-  addQueue(queue: CommandQueue) {
+  public addQueue(queue: CommandQueue) {
     const newQueuesIndex = this.newQueues.indexOf(queue);
     const queuesIndex = this.queues.indexOf(queue);
     const queuesToRemoveIndex = this.queuesToRemove.indexOf(queue);
@@ -58,7 +58,7 @@ export class CommandQueueGroup {
    *
    * @param queue The CommandQueue to remove. This queue should have been created, or added to this behaviour already.
    */
-  removeQueue(queue: CommandQueue) {
+  public removeQueue(queue: CommandQueue) {
     const newQueuesIndex = this.newQueues.indexOf(queue);
     const queuesIndex = this.queues.indexOf(queue);
     const queuesToRemoveIndex = this.queuesToRemove.indexOf(queue);
@@ -86,7 +86,7 @@ export class CommandQueueGroup {
    *
    * @param deltaTime The amount of time to update all the queues by.
    */
-  update(deltaTime: number) {
+  public update(deltaTime: number) {
     const queuesToUpdate = [...this.queues];
     do {
       this.queues.push(...this.newQueues);

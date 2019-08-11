@@ -3,18 +3,18 @@ import { CommandQueueGroup } from '../command-queue-group';
 
 /** @ignore */
 export class NodeRunner {
-  readonly scheduler = new CommandScheduler();
-  readonly queueGroup = new CommandQueueGroup();
+  public readonly scheduler = new CommandScheduler();
+  public readonly queueGroup = new CommandQueueGroup();
 
   private lastTimestamp: DOMHighResTimeStamp;
   private immediate: NodeJS.Immediate | undefined;
 
-  constructor(private maxDeltaTime: number) {
+  public constructor(private maxDeltaTime: number) {
     this.lastTimestamp = performance.now();
     this.immediate = setImmediate(() => this.animationCallback(performance.now()));
   }
 
-  cancel() {
+  public cancel() {
     if (this.immediate !== undefined) {
       clearImmediate(this.immediate);
       this.immediate = undefined;

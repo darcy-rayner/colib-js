@@ -2,11 +2,11 @@
  * `Ref` captures a variable using functions, so it can be passed around and mutated easily.
  */
 export class Ref<T> {
-  get value(): T {
+  public get value(): T {
     return this.getter();
   }
 
-  set value(val: T) {
+  public set value(val: T) {
     this.setter(val);
   }
 
@@ -27,7 +27,7 @@ export class Ref<T> {
    * @typeparam C The name of the property to capture.
    * @returns A reference to a property on an object.
    */
-  static from<T, C extends keyof T>(object: T, property: C): Ref<T[C]> {
+  public static from<T, C extends keyof T>(object: T, property: C): Ref<T[C]> {
     const getter = () => object[property];
     const setter = (val: T[C]) => (object[property] = val);
     return new Ref(getter, setter);
@@ -45,7 +45,7 @@ export class Ref<T> {
    * @param val The initial value to capture
    * @typeparam The type of the value.
    */
-  static create<T>(val: T): Ref<T> {
+  public static create<T>(val: T): Ref<T> {
     return new Ref(
       () => val,
       v => {
@@ -68,5 +68,5 @@ export class Ref<T> {
    * @param setter The setter to use for variable assignment;
    * @typeparam T The type of the value to capture.
    */
-  constructor(private getter: () => T, private setter: (val: T) => void) {}
+  public constructor(private getter: () => T, private setter: (val: T) => void) {}
 }

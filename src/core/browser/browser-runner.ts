@@ -3,18 +3,18 @@ import { CommandQueueGroup } from '../command-queue-group';
 
 /** @ignore */
 export class BrowserRunner {
-  readonly scheduler = new CommandScheduler();
-  readonly queueGroup = new CommandQueueGroup();
+  public readonly scheduler = new CommandScheduler();
+  public readonly queueGroup = new CommandQueueGroup();
 
   private lastTimestamp: DOMHighResTimeStamp;
   private requestId: number | undefined;
 
-  constructor(private maxDeltaTime: number) {
+  public constructor(private maxDeltaTime: number) {
     this.lastTimestamp = performance.now();
     this.requestId = window.requestAnimationFrame(t => this.animationCallback(t));
   }
 
-  cancel() {
+  public cancel() {
     if (this.requestId !== undefined) {
       window.cancelAnimationFrame(this.requestId);
       this.requestId = undefined;
