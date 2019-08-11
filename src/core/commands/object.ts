@@ -31,7 +31,7 @@ type Tweenable = Record<string | number | symbol, unknown>;
  * @param commandDuration The duration of the command.
  * @param ease The ease to apply
  */
-export function changeTo<T extends Tweenable>(object: T, target: T, commandDuration: number, ease?: Ease): Command {
+export function changeTo<T extends object>(object: T, target: T, commandDuration: number, ease?: Ease): Command {
   const refs = generateReferenceTargetPairs(object, target);
   const tweens = refs.map(pair => {
     const { ref, value } = pair;
@@ -60,7 +60,7 @@ export function changeTo<T extends Tweenable>(object: T, target: T, commandDurat
  * @param commandDuration The duration of the command.
  * @param ease The ease to apply
  */
-export function changeFrom<T extends Tweenable>(object: T, from: T, commandDuration: number, ease?: Ease): Command {
+export function changeFrom<T extends object>(object: T, from: T, commandDuration: number, ease?: Ease): Command {
   const refs = generateReferenceTargetPairs(object, from);
   const tweens = refs.map(pair => {
     const { ref, value } = pair;
@@ -89,12 +89,7 @@ export function changeFrom<T extends Tweenable>(object: T, from: T, commandDurat
  * @param commandDuration The duration of the command.
  * @param ease The ease to apply
  */
-export function changeToOffset<T extends Tweenable>(
-  object: T,
-  offset: T,
-  commandDuration: number,
-  ease?: Ease
-): Command {
+export function changeToOffset<T extends object>(object: T, offset: T, commandDuration: number, ease?: Ease): Command {
   const refs = generateReferenceTargetPairs(object, offset);
   const tweens = refs.map(pair => {
     const { ref, value } = pair;
@@ -123,7 +118,7 @@ export function changeToOffset<T extends Tweenable>(
  * @param commandDuration The duration of the command.
  * @param ease The ease to apply
  */
-export function changeFromOffset<T extends Tweenable>(
+export function changeFromOffset<T extends object>(
   object: T,
   offset: T,
   commandDuration: number,
@@ -157,7 +152,7 @@ export function changeFromOffset<T extends Tweenable>(
  * @param commandDuration The duration of the command.
  * @param ease The ease to apply
  */
-export function scaleBy<T extends Tweenable>(object: T, scaleFactor: T, commandDuration: number, ease?: Ease): Command {
+export function scaleBy<T extends object>(object: T, scaleFactor: T, commandDuration: number, ease?: Ease): Command {
   const refs = generateReferenceTargetPairs(object, scaleFactor);
   const tweens = refs.map(pair => {
     const { ref, value } = pair;
@@ -186,12 +181,7 @@ export function scaleBy<T extends Tweenable>(object: T, scaleFactor: T, commandD
  * @param commandDuration The duration of the command.
  * @param ease The ease to apply
  */
-export function scaleFrom<T extends Tweenable>(
-  object: T,
-  scaleFactor: T,
-  commandDuration: number,
-  ease?: Ease
-): Command {
+export function scaleFrom<T extends object>(object: T, scaleFactor: T, commandDuration: number, ease?: Ease): Command {
   const refs = generateReferenceTargetPairs(object, scaleFactor);
   const tweens = refs.map(pair => {
     const { ref, value } = pair;
@@ -200,7 +190,7 @@ export function scaleFrom<T extends Tweenable>(
   return parallel(...tweens);
 }
 
-function generateReferenceTargetPairs<T extends Tweenable>(obj: T, target: T) {
+function generateReferenceTargetPairs<T extends object>(obj: T, target: T) {
   const refs: CommonRefPairs[] = [];
 
   const objs: { obj: unknown; target: unknown }[] = [{ obj, target }];
