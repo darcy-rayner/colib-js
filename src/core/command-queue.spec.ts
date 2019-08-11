@@ -106,7 +106,7 @@ describe('CommandQueue', () => {
   it('should be safe to call process while the queue is updating', () => {
     const queue = new CommandQueue();
     queue.push(
-      interval(t => {
+      interval(() => {
         queue.process();
       }, 3)
     );

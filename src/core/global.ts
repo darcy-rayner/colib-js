@@ -44,7 +44,7 @@ export function globalScheduler(maxDeltaTime = MAX_DELTA_TIME_MS): CommandSchedu
  * @returns A global, shared `CommandQueueGroup` for the current environment.
  */
 export function globalQueueGroup(maxDeltaTime = MAX_DELTA_TIME_MS): CommandQueueGroup {
-  return getRunner().queueGroup;
+  return getRunner(maxDeltaTime).queueGroup;
 }
 
 /**

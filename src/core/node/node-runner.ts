@@ -11,7 +11,7 @@ export class NodeRunner {
 
   constructor(private maxDeltaTime: number) {
     this.lastTimestamp = performance.now();
-    this.immediate = setImmediate(t => this.animationCallback(performance.now()));
+    this.immediate = setImmediate(() => this.animationCallback(performance.now()));
   }
 
   cancel() {

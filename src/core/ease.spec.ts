@@ -223,7 +223,6 @@ Array [
     const ease = elastic();
     const easeAdjusted = elastic(-1);
 
-    const outputs = [];
     for (let i = 0; i <= 10; ++i) {
       const expected = ease(i / 10);
       expect(easeAdjusted(i / 10)).toBe(expected);
