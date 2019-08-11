@@ -20,12 +20,12 @@ export class CommandQueue {
    * queue.update(1.0); // 'called'
    * ```
    */
-  paused = false;
+  public paused = false;
 
   /**
    * Gets the elapsed time since the current executing Command started.
    */
-  get deltaTimeAccumulation() {
+  public get deltaTimeAccumulation() {
     return this._deltaTimeAccumulation;
   }
 
@@ -33,7 +33,7 @@ export class CommandQueue {
    * Indicates whether the CommandQueue is currently in an update loop. Update should
    * never be again while this is true.
    */
-  get updating() {
+  public get updating() {
     return this._updating;
   }
 
@@ -57,7 +57,7 @@ export class CommandQueue {
    * @param commands The `Command`s to be enqueued. The `CommandQueue` will dequeue the commands over succesive calls to
    * update.
    */
-  push(...commands: Command[]): CommandQueue {
+  public push(...commands: Command[]): CommandQueue {
     this.commands.push(...commands);
     return this;
   }
@@ -70,7 +70,7 @@ export class CommandQueue {
    * queue.process(); // 'called'
    * ```
    */
-  process() {
+  public process() {
     // If we are already in an update loop, then just let the queue continue running.
     if (!this.updating) {
       this.update(0.0);
@@ -90,7 +90,7 @@ export class CommandQueue {
    * queue.runToEnd(); // 'called'
    * ```
    */
-  runToEnd() {
+  public runToEnd() {
     this.update(Number.MAX_VALUE, CommandOperation.FastForward);
   }
 
@@ -115,7 +115,7 @@ export class CommandQueue {
    * @param operation The update operation to use. Fastforward will try to force commands to reach the end of the queue.
    * @returns If the queue is finished as no `Command`s remain, returns `true`, `false` otherwise.
    */
-  update(deltaTime: number, operation = CommandOperation.Normal): boolean {
+  public update(deltaTime: number, operation = CommandOperation.Normal): boolean {
     if (deltaTime < 0.0) {
       throw RangeError('deltaTime is expected to be positive.');
     }

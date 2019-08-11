@@ -116,7 +116,7 @@ export function interruptable(command: Command, onInterrupt: () => void): Comman
  * ```
  */
 export function none(): Command {
-  return (deltaTime, _) => ({ deltaTime, complete: true });
+  return deltaTime => ({ deltaTime, complete: true });
 }
 
 /**
@@ -142,7 +142,7 @@ export function interval(command: CommandInterval, duration: number, ease?: Ease
   if (duration === 0.0) {
     // Sometimes it is convenient to create duration commands with
     // a time of zero, so we have a special case.
-    return (deltaTime, operation) => {
+    return deltaTime => {
       command(1);
       return { deltaTime, complete: true };
     };

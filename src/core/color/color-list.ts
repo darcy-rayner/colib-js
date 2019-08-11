@@ -1,5 +1,5 @@
 /** @ignore */
-export const colors = {
+export const colors: { [key: string]: number } = {
   aliceblue: 0xf0f8ff,
   antiquewhite: 0xfaebd7,
   aqua: 0x00ffff,
@@ -148,4 +148,4 @@ export const colors = {
   whitesmoke: 0xf5f5f5,
   yellow: 0xffff00,
   yellowgreen: 0x9acd32
-} as { [key: string]: number };
+};

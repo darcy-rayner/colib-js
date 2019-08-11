@@ -37,15 +37,16 @@ export type ColorType = string | number | ColorRGB | ColorHSL | ColorHSV;
  * Type guard for determining whether a color is a ColorRGB object.
  * @param value The value to test.
  */
-export function isColorRGB(value: any): value is ColorRGB {
+export function isColorRGB(value: unknown): value is ColorRGB {
   if (typeof value !== 'object') {
     return false;
   }
+  const record = value as Record<string, unknown>;
   return (
-    typeof value.r === 'number' &&
-    typeof value.g === 'number' &&
-    typeof value.b === 'number' &&
-    (value.a === undefined || typeof value.a === 'number')
+    typeof record.r === 'number' &&
+    typeof record.g === 'number' &&
+    typeof record.b === 'number' &&
+    (record.a === undefined || typeof record.a === 'number')
   );
 }
 
@@ -53,15 +54,16 @@ export function isColorRGB(value: any): value is ColorRGB {
  * Type guard for determining whether a color is a ColorHSV object.
  * @param value The value to test.
  */
-export function isColorHSV(value: any): value is ColorHSV {
+export function isColorHSV(value: unknown): value is ColorHSV {
   if (typeof value !== 'object') {
     return false;
   }
+  const record = value as Record<string, unknown>;
   return (
-    typeof value.h === 'number' &&
-    typeof value.s === 'number' &&
-    typeof value.v === 'number' &&
-    (value.a === undefined || typeof value.a === 'number')
+    typeof record.h === 'number' &&
+    typeof record.s === 'number' &&
+    typeof record.v === 'number' &&
+    (record.a === undefined || typeof record.a === 'number')
   );
 }
 
@@ -69,15 +71,16 @@ export function isColorHSV(value: any): value is ColorHSV {
  * Type guard for determining whether a color is a ColorHSL object.
  * @param value The value to test.
  */
-export function isColorHSL(value: any): value is ColorHSL {
+export function isColorHSL(value: unknown): value is ColorHSL {
   if (typeof value !== 'object') {
     return false;
   }
+  const record = value as Record<string, unknown>;
   return (
-    typeof value.h === 'number' &&
-    typeof value.s === 'number' &&
-    typeof value.l === 'number' &&
-    (value.a === undefined || typeof value.a === 'number')
+    typeof record.h === 'number' &&
+    typeof record.s === 'number' &&
+    typeof record.l === 'number' &&
+    (record.a === undefined || typeof record.a === 'number')
   );
 }
 

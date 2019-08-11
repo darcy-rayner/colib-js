@@ -75,7 +75,7 @@ describe('interval', () => {
   it('respects the fast forward operation', () => {
     const queue = new CommandQueue();
     let called = false;
-    queue.push(interval(t => {}, 10), () => {
+    queue.push(interval(() => {}, 10), () => {
       called = true;
     });
     queue.runToEnd();

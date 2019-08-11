@@ -9,7 +9,7 @@ export class CommandScheduler {
   /**
    * Gets or sets a value indicating whether this `CommandScheduler` is paused.
    */
-  paused = false;
+  public paused = false;
 
   private queues: CommandQueue[] = [];
 
@@ -27,7 +27,7 @@ export class CommandScheduler {
    *
    * @param commands The commands to execute.
    */
-  add(...commands: Command[]) {
+  public add(...commands: Command[]) {
     if (commands.length === 0) {
       return;
     }
@@ -58,7 +58,7 @@ export class CommandScheduler {
    *
    * @param deltaTime The time since the last update. Must be >= 0.
    */
-  update(deltaTime: number) {
+  public update(deltaTime: number) {
     if (deltaTime < 0) {
       throw new RangeError('deltaTime is expected to be >= 0');
     }

@@ -9,6 +9,7 @@ interface RefPair<T> {
 }
 
 type CommonRefPairs = RefPair<number>;
+type Tweenable = Record<string | number | symbol, unknown>;
 
 /**
  * Tweens the properties on an object to a set of target values, using regular linear interpolation.
@@ -30,7 +31,7 @@ type CommonRefPairs = RefPair<number>;
  * @param commandDuration The duration of the command.
  * @param ease The ease to apply
  */
-export function changeTo<T>(object: T, target: T, commandDuration: number, ease?: Ease): Command {
+export function changeTo<T extends object>(object: T, target: T, commandDuration: number, ease?: Ease): Command {
   const refs = generateReferenceTargetPairs(object, target);
   const tweens = refs.map(pair => {
     const { ref, value } = pair;
@@ -59,7 +60,7 @@ export function changeTo<T>(object: T, target: T, commandDuration: number, ease?
  * @param commandDuration The duration of the command.
  * @param ease The ease to apply
  */
-export function changeFrom<T>(object: T, from: T, commandDuration: number, ease?: Ease): Command {
+export function changeFrom<T extends object>(object: T, from: T, commandDuration: number, ease?: Ease): Command {
   const refs = generateReferenceTargetPairs(object, from);
   const tweens = refs.map(pair => {
     const { ref, value } = pair;
@@ -88,7 +89,7 @@ export function changeFrom<T>(object: T, from: T, commandDuration: number, ease?
  * @param commandDuration The duration of the command.
  * @param ease The ease to apply
  */
-export function changeToOffset<T>(object: T, offset: T, commandDuration: number, ease?: Ease): Command {
+export function changeToOffset<T extends object>(object: T, offset: T, commandDuration: number, ease?: Ease): Command {
   const refs = generateReferenceTargetPairs(object, offset);
   const tweens = refs.map(pair => {
     const { ref, value } = pair;
@@ -117,7 +118,12 @@ export function changeToOffset<T>(object: T, offset: T, commandDuration: number,
  * @param commandDuration The duration of the command.
  * @param ease The ease to apply
  */
-export function changeFromOffset<T>(object: T, offset: T, commandDuration: number, ease?: Ease): Command {
+export function changeFromOffset<T extends object>(
+  object: T,
+  offset: T,
+  commandDuration: number,
+  ease?: Ease
+): Command {
   const refs = generateReferenceTargetPairs(object, offset);
   const tweens = refs.map(pair => {
     const { ref, value } = pair;
@@ -146,7 +152,7 @@ export function changeFromOffset<T>(object: T, offset: T, commandDuration: numbe
  * @param commandDuration The duration of the command.
  * @param ease The ease to apply
  */
-export function scaleBy<T>(object: T, scaleFactor: T, commandDuration: number, ease?: Ease): Command {
+export function scaleBy<T extends object>(object: T, scaleFactor: T, commandDuration: number, ease?: Ease): Command {
   const refs = generateReferenceTargetPairs(object, scaleFactor);
   const tweens = refs.map(pair => {
     const { ref, value } = pair;
@@ -175,7 +181,7 @@ export function scaleBy<T>(object: T, scaleFactor: T, commandDuration: number, e
  * @param commandDuration The duration of the command.
  * @param ease The ease to apply
  */
-export function scaleFrom<T>(object: T, scaleFactor: T, commandDuration: number, ease?: Ease): Command {
+export function scaleFrom<T extends object>(object: T, scaleFactor: T, commandDuration: number, ease?: Ease): Command {
   const refs = generateReferenceTargetPairs(object, scaleFactor);
   const tweens = refs.map(pair => {
     const { ref, value } = pair;
@@ -184,14 +190,14 @@ export function scaleFrom<T>(object: T, scaleFactor: T, commandDuration: number,
   return parallel(...tweens);
 }
 
-function generateReferenceTargetPairs<T extends Object>(obj: T, target: T) {
+function generateReferenceTargetPairs<T extends object>(obj: T, target: T) {
   const refs: CommonRefPairs[] = [];
 
-  const objs: { obj: any; target: any }[] = [{ obj, target }];
+  const objs: { obj: unknown; target: unknown }[] = [{ obj, target }];
   const visited = new Set();
 
   while (objs.length > 0) {
-    const pair = objs.pop() as { obj: any; target: any };
+    const pair = objs.pop() as { obj: Tweenable; target: Tweenable };
     if (visited.has(pair.obj) || visited.has(pair.target)) {
       throw new Error("Can't tween a value that refences itself recursively");
     }

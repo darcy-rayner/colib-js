@@ -1,9 +1,9 @@
 # Colib
 
-[![Build Status](https://cloud.drone.io/api/badges/twobulls/colib.js/status.svg)](https://cloud.drone.io/twobulls/colib.js)
-[![npm version](https://badge.fury.io/js/%40twobulls%2Fcolib.svg)](https://badge.fury.io/js/%40twobulls%2Fcolib)
+[![Build Status](https://cloud.drone.io/api/badges/darcy-rayner/colib-js/status.svg)](https://cloud.drone.io/darcy-rayner/colib-js)
+[![npm version](https://badge.fury.io/js/colib.svg)](https://badge.fury.io/js/colib)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![MIT license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.md)
+[![Apache 2.0 license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.md)
 
 > Next generation tweening and timed logic sequencing for typescript.
 
@@ -48,7 +48,7 @@ Check out the documentation [here](docs/index.md).
 
 ## Changelog
 
-See the GitHub [release history](https://github.com/twobulls/colib/releases).
+See the GitHub [release history](https://github.com/darcy-rayner/colib-js/releases).
 
 ## Contributing
 
