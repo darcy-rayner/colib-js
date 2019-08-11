@@ -38,7 +38,7 @@ And lastly, if you are using script tags, you can add colib globally by doing th
 </head>
 <body>
   <script>
-    globalScheduler().add(waitForSeconds(5), () => {
+    colib.globalScheduler().add(colib.waitForSeconds(5), () => {
       console.log('Hello World');
     });
   </script>
