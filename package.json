@@ -25,6 +25,7 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "minified": "dist/colib.min.js",
+  "minifiedES": "dist/colib.min.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build-watch": "$(yarn bin)/supervisor -n success -w src,package.json,rollup.config.js,tsconfig.json -e ts -x bash ./scripts/build-watch.sh",

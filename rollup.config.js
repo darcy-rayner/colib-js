@@ -33,8 +33,21 @@ export default [
     input: 'src/index.ts',
     output: [
       {
-        file: pkg.minified,
+        file: pkg.minifiedES,
         format: 'es',
+        sourcemap: false
+      }
+    ],
+    external: [...Object.keys(pkg.peerDependencies || {})],
+    plugins: [resolve(), commonjs(), typescript2(), terser()]
+  },
+  {
+    input: 'src/index.ts',
+    output: [
+      {
+        name: 'colib',
+        file: pkg.minified,
+        format: 'iife',
         sourcemap: false
       }
     ],
