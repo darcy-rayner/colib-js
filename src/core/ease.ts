@@ -18,7 +18,7 @@ export function linear(): Ease {
  * Quantises t into numSteps + 1 levels, using the round operation.
  * @param numSteps Must be >= 1
  */
-export function roundStep(numSteps: number = 1): Ease {
+export function roundStep(numSteps = 1): Ease {
   checkNumStepsGreaterThanZero(numSteps);
   const roundedSteps = Math.round(numSteps);
 
@@ -31,7 +31,7 @@ export function roundStep(numSteps: number = 1): Ease {
  * of the ease.
  * @param numSteps Must be >= 1
  */
-export function ceilStep(numSteps: number = 1): Ease {
+export function ceilStep(numSteps = 1): Ease {
   checkNumStepsGreaterThanZero(numSteps);
   const roundedSteps = Math.round(numSteps);
   return t => Math.ceil(t * roundedSteps) / roundedSteps;
