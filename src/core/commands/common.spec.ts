@@ -47,9 +47,15 @@ describe('interruptable', () => {
     const queue = new CommandQueue();
     let callCount = 0;
     queue.push(
-      repeat(2, interruptable(waitForTime(1), () => {}), () => {
-        callCount++;
-      })
+      repeat(
+        2,
+        interruptable(waitForTime(1), () => {
+          /* Do nothing */
+        }),
+        () => {
+          callCount++;
+        }
+      )
     );
 
     queue.update(1);
@@ -75,9 +81,14 @@ describe('interval', () => {
   it('respects the fast forward operation', () => {
     const queue = new CommandQueue();
     let called = false;
-    queue.push(interval(() => {}, 10), () => {
-      called = true;
-    });
+    queue.push(
+      interval(() => {
+        /* Do nothing */
+      }, 10),
+      () => {
+        called = true;
+      }
+    );
     queue.runToEnd();
     expect(called).toBeTruthy();
   });
@@ -124,7 +135,11 @@ describe('interval', () => {
     expect(ts).toEqual([smoothEase(0.25), smoothEase(0.5), smoothEase(1)]);
   });
   it('throws an error when duration is negative', () => {
-    expect(() => interval(() => {}, -1)).toThrowError();
+    expect(() =>
+      interval(() => {
+        /* Do nothing */
+      }, -1)
+    ).toThrowError();
   });
 });
 
