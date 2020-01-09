@@ -53,7 +53,7 @@
     "dts-bundle-generator": "^3.3.1",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
-    "husky": "^3.1.0",
+    "husky": "^4.0.2",
     "jest": "^24.9.0",
     "license-checker": "^25.0.1",
     "prettier": "^1.19.1",
