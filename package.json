@@ -48,7 +48,7 @@
     "@typescript-eslint/parser": "^2.11.0",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "3.0.2",
-    "danger": "^9.2.9",
+    "danger": "^10.0.0",
     "danger-plugin-istanbul-coverage": "^1.6.2",
     "dts-bundle-generator": "^3.3.1",
     "eslint": "^6.7.2",
