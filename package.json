@@ -67,7 +67,7 @@
     "semantic-release": "^15.13.31",
     "supervisor": "^0.12.0",
     "ts-jest": "^24.2.0",
-    "typedoc": "^0.15.4",
+    "typedoc": "^0.17.4",
     "typedoc-plugin-internal-external": "^2.0.2",
     "typedoc-plugin-markdown": "^2.2.14",
     "typescript": "^3.7.3"
